@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="hr_payslip_form_inherit">
+        <field name="name">hr.payslip.form.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <page name="account_info" position="after">
+                <page string="Attendance">
+                    <group>
+                        <group>
+                            <field name="number_hours_per_month" widget="float_time"/>
+                            <field name="number_days_per_month"/>
+                            <hr size="50" color="blue">
+                            </hr>
+                            <field name="total_extra_hours" widget="float_time" help="Extra Hours = Actual Extra Hours * Setting Configurate for Hour Rate "/>
+                            <field name="employee_salary"/>
+                            <field name="overtime_amount" style="color:green;" string="Total Extra Amount" help="Extra Amount = number of Extra time * Employee wage / Days per month"/>
+                              <hr size="50" color="blue">
+                            </hr>
+                            <field name="total_leave_hours_payslip" widget="float_time"/>
+                             <field name="total_leave_hour_cost" style="color:red;"  string="Total Leave Before Time Amount" help="Leave Before Check-out = number of leave / leave time (go to setting Configuration) * Cost leave (go to setting Configuration)"/>
+                        </group>
+                        <group>
+                            <label for="total_attendance_late" string="Total Late from Check-in Time"/>
+                            <div class="o_row">
+                                <field name="total_attendance_late"   widget="float_time" />
+                            </div>
+                            <label for="total_cost_late" string="Total Late from Check-in Amount" help="Late From Check-in Cost = number of late hours *  Cost of Late (go to setting Configuration)"/>
+                            <div class="o_row">
+                                <field name="total_cost_late"  nolabel="1" style="color:red;"/>
+                            </div>
+                            <hr size="50" color="blue">
+                            </hr>
+                            <br/>
+                            <br/>
+                            <field name="total_absence_per_month" style="font-weight: bold;" string="Total Absent Per Period"/>
+                            <field name="total_absence_per_month_cost" style="color:red;" string="Total Absent Amount" help="Total Absent Amount = number of absent *  Cost of absent (go to setting Configuration) if absent more than three times : Total Absent Amount = number of absent * wage / number of days per month"/>
+                        </group>
+                        <group>
+                            <field name="first_time_absent"  widget="float_time" invisible="1"/>
+                            <field name="second_time_absent"  widget="float_time" invisible="1"/>
+                            <field name="third_time_absent"  widget="float_time" invisible="1"/>
+                        </group>
+                    </group>
+                    <br/>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

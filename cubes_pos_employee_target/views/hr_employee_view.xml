@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="commission_details" string="Commission Details">
+                        <group>
+                            <group>
+                                <field name="target" invisible="1" />
+                                <field name="refund_limit"/>
+                                <field name="total_pos_sales" readonly="1" force_save="1" />
+                                <field name="total_employee_pos_sales" readonly="1" force_save="1" />
+                                <field name="is_target" invisible="1"/>
+                                <field name="commission" readonly="1" force_save="1" />
+                            </group>
+                            <group>
+                                <field name="target_commission" readonly="1" force_save="1"  />
+                                <field name="total_employee_commission" readonly="1" force_save="1"  />
+                            </group>
+                        </group>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="custom_report_picking" inherit_id="stock.report_picking">
+            <xpath expr="//td[6]" position="replace">
+                <td class="text-center" t-if="has_barcode">
+                    <t t-if="product_barcode != ml.product_id.barcode">
+                        <span t-if="ml.product_id and ml.product_id.barcode">
+                            <spam t-esc="ml.product_id.barcode"/>
+                            <div t-field="ml.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'width': 400, 'height': 100, 'quiet': 0, 'img_style': 'height:35px;'}"/>
+                        </span>
+                        <t t-set="product_barcode" t-value="ml.product_id.barcode"/>
+                    </t>
+                </td>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

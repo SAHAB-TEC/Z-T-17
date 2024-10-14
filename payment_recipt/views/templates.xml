@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_payment_receipt_document_custom_font" inherit_id="account.report_payment_receipt_document">
+        <!-- Adding custom style -->
+        <xpath expr="//div[@class='page']" position="before">
+            <style>
+                .custom-report-font {
+                font-size: 24px; /* Adjust the font size as needed */
+                }
+            </style>
+        </xpath>
+
+        <!-- Applying custom class to the div with class 'page' -->
+        <xpath expr="//div[@class='page']" position="attributes">
+            <attribute name="class">custom-report-font</attribute>
+        </xpath>
+
+        <xpath expr="//div[@t-if='o.amount']" position="replace">
+            <div class="col-6" t-if="o.payment_method_id">
+                Payment Method: <span t-field="o.payment_method_id.name"/>
+            </div>
+        </xpath>
+        <!-- <xpath expr="//div[@t-if='o.ref']" position="replace">
+        </xpath> -->
+        <xpath expr="//div[@name='payment_method']" position="replace">
+            <div class="col-6" t-if="o.amount">
+                <b>
+                    Payment Amount:
+                    <span t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                </b>
+            </div>
+        </xpath>
+        <!-- <xpath expr="//div[hasclass('mb-4')]" position="inside">
+            <div class="row">
+                <div class="col-6" t-if="o.ref">
+                    Memo: <span t-field="o.ref"/>
+                </div>
+            </div>
+
+        </xpath> -->
+    </template>
+</odoo>

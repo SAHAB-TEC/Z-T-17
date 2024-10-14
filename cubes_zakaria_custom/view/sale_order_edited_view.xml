@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_order_form_inherited_x1" model="ir.ui.view">
+        <field name="name">sale.order.form.x1</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="total_qty"/>
+                <field name="has_create_product" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="before">
+                <field name="serial_number"/>
+
+                <field name="copy_product_id"
+                       column_invisible="parent.has_create_product"
+                       options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_template_id']" position="attributes">
+                <attribute name="column_invisible">not parent.has_create_product</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

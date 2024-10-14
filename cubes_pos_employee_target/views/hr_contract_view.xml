@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_hr_contract_form" model="ir.ui.view">
+            <field name="name">hr.contract.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Target" name="target">
+                        <group>
+                            <group>
+                                <field name="refund_limit"/>
+                                <field name="target_amount"/>
+                                <field name="each_k_target_amount"/>
+                                <label for="commission_rate"/>
+                                <div class="oe_inline">
+                                    <field name="commission_rate" nolabel="1" class="oe_inline"/>
+                                    <span style="color:#008784" class="oe_inline">for every</span>
+                                    <span style="color:#008784" class="oe_inline">&#160;&#160;&#160;&#160;&#160;</span>
+                                    <field name="rate" nolabel="1" class="oe_inline"/>
+                                </div>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

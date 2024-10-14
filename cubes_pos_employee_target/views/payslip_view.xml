@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="payslip_commission_form_inherit" model="ir.ui.view">
+            <field name="name">payslip.commission.inherited.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="commission_details" string="Commission Details">
+                        <group>
+                            <field name="total_commission" readonly="1"/>
+                            <field name="skip_deduction"/>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

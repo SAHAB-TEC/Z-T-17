@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="leave_request_form_view" model="ir.ui.view">
+            <field name="name">request.leave_request.form</field>
+            <field name="model">leave.request.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee Leave Request">
+                    <header>
+                        <button name="action_confirm" string="Confirm"
+                                type="object" class="oe_highlight"
+                                invisible="state != 'draft'"/>
+                        <button name="action_validate" string="Validate"
+                                type="object" class="oe_highlight"
+                                invisible="state != 'confirm'"/>
+                        <button name="action_draft" string="Back to Draft"
+                                type="object" class="oe_highlight"
+                                invisible="state != 'confirm'"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Title of Request" readonly="state == 'done'"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id"  readonly="state == 'done'"/>
+                                <field name="contract_id"  readonly="state == 'done'"/>
+                            </group>
+                            <group>
+                                <field name="request_from"  readonly="state == 'done'"/>
+                                <field name="request_to"    readonly="state == 'done'"/>
+                                <field name="total_leave_hours" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="reason" string="Reason Of Leave">
+                                <field name="reason_to_leave" readonly="state == done"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="leave_request_tree_view" model="ir.ui.view">
+            <field name="name">ProjectName.leave_request.tree</field>
+            <field name="model">leave.request.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Leave Request">
+                    <field name="name"/>
+                    <field name="request_from"/>
+                    <field name="request_to"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="leave_request_search_view" model="ir.ui.view">
+            <field name="name">ProjectName.leave_request.search</field>
+            <field name="model">leave.request.employee</field>
+            <field name="arch" type="xml">
+                <search string="Employee Leave Request">
+                    <group expand="1" string="Group By">
+                        <filter string="Employee" name="employee_id" domain="[]"
+                                context="{'group_by':'employee_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="leave_request_act_window" model="ir.actions.act_window">
+            <field name="name">Employee Leave Request</field>
+            <field name="res_model">leave.request.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Employee Leave Request.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Employee Leave Request" id="leave_request_menu" parent="hr.menu_hr_root" action="leave_request_act_window" sequence="123"/>
+
+    </data>
+</odoo>

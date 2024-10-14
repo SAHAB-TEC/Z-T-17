@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="47deaf0d-45d0-4f5b-81e6-cf0ebf98ee49" name="Changes" comment="[fix] Overtime Calculation" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="OdooViewInherit" />
+        <option value="OdooModel" />
+        <option value="OdooViewBasic" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="tesing" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2VCwpYLWngXwOgFyGjDGvoz9Jqi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultOdooModelFileTemplate&quot;: &quot;OdooModel&quot;,
+    &quot;DefaultOdooViewFileTemplate&quot;: &quot;OdooViewBasic&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/abdu/Documents/work/configuration/zakaria.conf&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/zakariahone_attendance/views" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ZakariaHome" type="PythonConfigurationType" factoryName="Python">
+      <module name="ZakariaHome" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../lib_python/lib/python3.8/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../odoo/odoo15/odoo-15.0" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="false" />
+      <option name="ADD_SOURCE_ROOTS" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../odoo/odoo15/odoo-15.0/odoo-bin" />
+      <option name="PARAMETERS" value="-c $PROJECT_DIR$/../../configuration/zakaria.conf --limit-time-real 99999 -u zakariahone_attendance" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47deaf0d-45d0-4f5b-81e6-cf0ebf98ee49" name="Changes" comment="" />
+      <created>1694353553177</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694353553177</updated>
+    </task>
+    <task id="LOCAL-00001" summary="[FIX] Commission Functionality Payslips">
+      <created>1694364067934</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694364067934</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[FIX] Late And Overtime Functionality Payslips">
+      <created>1694357869126</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694357869126</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[FIX]  Salary Rules Data">
+      <created>1694358460264</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694358460264</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[FIX] BUG When create payslip">
+      <created>1694383355582</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694383355582</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[FIX] Add gitignore">
+      <created>1694504377345</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1694504377345</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[FIX] Absent Functionality">
+      <created>1694699506011</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1694699506011</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[MOD] Absent Functionality">
+      <created>1694701622093</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1694701622093</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[MOD] Absent Functionality Customization">
+      <created>1694875621070</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1694875621070</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[MOD] rules payslip Calc">
+      <created>1694876710062</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1694876710062</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[MOD] attendance">
+      <created>1695120617387</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695120617387</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[MOD] Target Commission">
+      <created>1695121984468</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1695121984468</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[MOD] Target Commission Fix">
+      <created>1695304096366</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1695304096366</updated>
+    </task>
+    <task id="LOCAL-00013" summary="[MOD] Late Payslip Calculation">
+      <created>1695492600966</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695492600966</updated>
+    </task>
+    <task id="LOCAL-00014" summary="[fix] Late Payslip Calculation total">
+      <created>1695554183427</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695554183427</updated>
+    </task>
+    <task id="LOCAL-00015" summary="[fix] Overtime Calculation">
+      <created>1695556009839</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1695556009839</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[FIX] Commission Functionality Payslips" />
+    <MESSAGE value="[FIX] Late And Overtime Functionality Payslips" />
+    <MESSAGE value="[FIX]  Salary Rules Data" />
+    <MESSAGE value="[FIX] BUG When create payslip" />
+    <MESSAGE value="[FIX] Add gitignore" />
+    <MESSAGE value="[FIX] Absent Functionality" />
+    <MESSAGE value="[MOD] Absent Functionality" />
+    <MESSAGE value="[MOD] Absent Functionality Customization" />
+    <MESSAGE value="[MOD] rules payslip Calc" />
+    <MESSAGE value="[MOD] attendance" />
+    <MESSAGE value="[MOD] Target Commission" />
+    <MESSAGE value="[MOD] Target Commission Fix" />
+    <MESSAGE value="[MOD] Late Payslip Calculation" />
+    <MESSAGE value="[fix] Late Payslip Calculation total" />
+    <MESSAGE value="[fix] Overtime Calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix] Overtime Calculation" />
+  </component>
+</project>

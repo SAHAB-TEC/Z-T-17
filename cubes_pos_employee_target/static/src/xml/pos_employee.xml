@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PosEmployeeSelect" owl="1">
+        <div class="control-button">
+            <i class="fa fa-user"/>
+            <span t-if="!env.pos.get_order().pos_employee_name">Select Employee</span>
+            <span t-if="env.pos.get_order().pos_employee_name" t-esc="env.pos.get_order().pos_employee_name"></span>
+        </div>
+    </t>
+    <t t-name="EmployeePosScreen" owl="1">
+        <div role="dialog" class="modal-dialog">
+           <div class="popup popup-couponproducts" style="background-color: #7bcedb">
+               <p class="title">
+                   <t t-esc="props.title" />
+               </p>
+               <div class="body">
+                    <div>
+                        <select id="select_employee">
+                            <t t-foreach="props.pos_employee" t-as="item" t-key="item.id">
+                                <option t-att-value="item.id" class='product product_content fix_product selected'
+                                      t-on-click="() => this.trigger('click-employee', item)">
+                                    <div class="product-list row">
+                                        <div class="product-name" style="text-center">
+                                            <t t-esc="item.name"/>
+                                        </div>
+                                    </div>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+               </div>
+               <div class="footer">
+                   <div class="button cancel" t-on-click="confirm">
+                       <t t-esc="props.confirmText" />
+                   </div>
+               </div>
+           </div>
+       </div>
+    </t>
+
+</templates>

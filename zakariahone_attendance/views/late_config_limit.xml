@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="hr_attendance_late_limit_config" model="ir.ui.view">
+        <field name="name">res.config.settings.late.limit.config</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@name='overtime_settings']" position="after">
+                <div class="row mt16 o_settings_container" name="late_setting">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div>
+                            <br/>
+                            <strong>Attendance Absent Penalties Fixed Amount Deduction</strong>
+                            <br/>
+                            <br/>
+                            <span>First Absent Cost</span><field name="absent1" class="text-center oe_inline"/>
+                            <br/>
+                            <br/>
+                            <span>second Absent Cost</span><field name="absent2" class="text-center oe_inline"/>                                <br/>
+                            <br/>
+                            <span>Third Absent Cost</span><field name="absent3" class="text-center oe_inline"/>                                <br/>
+                            <br/>
+                            <br/>
+                            <strong>Overtime / Extra Hour Attendance Rate</strong>
+                            <br/>
+                            <p>For EX : Hour = 1:30</p>
+                            <br/>
+                            <span>Overtime Hour = </span><field name="overtime_rate" class="text-center oe_inline" widget="float_time"/><span></span>
+                            <br/>
+                            <br/>
+                            <strong>Attendance Late Penalties Fixed Amount Deduction</strong>
+                            <br/>
+                            <br/>
+                            <span>First late </span><field name="late_first_time" class="text-center oe_inline"  widget="float_time"/><span>Cost</span><field name="late_first_cost" class="text-center oe_inline"/>
+                            <br/>
+                            <br/>
+                            <span>Second late </span><field name="late_second_time" class="text-center oe_inline"  widget="float_time"/><span>Cost</span><field name="late_second_cost" class="text-center oe_inline"/>
+                            <br/>
+                            <br/>
+                            <span>Third late </span><field name="late_third_time" class="text-center oe_inline"  widget="float_time"/><span>Cost</span><field name="late_third_cost" class="text-center oe_inline"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <strong>Leave Before Checkout Rate</strong>
+                            <br/>
+                            <br/>
+                            <span>For Every</span><field name="before_time_leave" class="text-center oe_inline"  widget="float_time"/><br/><span>Cost</span><field name="before_time_leave_cost" class="text-center oe_inline"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

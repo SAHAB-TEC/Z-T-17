@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+
+        <record id="create_product_group" model="res.groups">
+            <field name="name">Create Product</field>
+        </record>
+    </data>
+</odoo>

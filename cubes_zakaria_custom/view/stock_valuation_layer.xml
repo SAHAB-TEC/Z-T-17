@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="inherit_view_inventory_valuation_search" model="ir.ui.view">
+        <field name="name">inherit_view_inventory_valuation_search</field>
+        <field name="model">stock.valuation.layer</field>
+        <field name="inherit_id" ref="stock_account.view_inventory_valuation_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="category_id"/>
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter string="Category" name="group_by_category_id" context="{'group_by': 'category_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

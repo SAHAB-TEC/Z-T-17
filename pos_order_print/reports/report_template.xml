@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- <report
+                id="report_order_pos_custom"
+                model="pos.order"
+                string="Print Order"
+                name="pos_order_print.report_pos_order_template"
+                file="pos_order_print.report_pos_order_template"
+                report_type="qweb-pdf"/> -->
+        
+        <!-- report_order_pos_custom action report -->
+        <record id="action_report_order_pos_custom" model="ir.actions.report">
+            <field name="name">Print Order</field>
+            <field name="type">ir.actions.report</field>
+            <field name="report_name">pos_order_print.report_pos_order_template</field>
+            <field name="report_file">pos_order_print.report_pos_order_template</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="model">pos.order</field>
+            <field name="binding_model_id" ref="point_of_sale.model_pos_order"/>
+        </record>
+
+        <template id="report_pos_order_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="align-middle">
+                                        <td class="w-50">
+                                            <h2>
+                                                <span style="color:black;">POS Order Details</span>
+                                                <span t-field="o.name" style="color:black;"/>
+                                            </h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div id="informations" class="row mt-4 mb-4">
+                                <div class="col-auto col-3 mw-100 mb-2" t-if="o.date_order" name="date_order" style="color:black;">
+                                    <strong style="color:black;">Customer:</strong>
+                                    <p class="m-0" t-field="o.partner_id.name"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2" t-if="o.date_order" name="date_order" style="color:black;">
+                                    <strong style="color:black;">Order Date:</strong>
+                                    <p class="m-0" t-field="o.date_order"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2" t-if="o.employee_id" style="color:black;margin-right: -35px;margin-top:-2px">
+                                    <strong style="color:black;">Cashier:</strong>
+                                    <p class="m-0" t-field="o.employee_id.name" style="color:black;"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-2" t-if="o.session_id" name="session">
+                                    <strong style="color:black;">Session:</strong>
+                                    <p class="m-0" t-field="o.session_id.name"/>
+                                </div>
+                            </div>
+
+                            <table class="table table-bordered" name="pos_line_table_custom" style="border: 1px solid black;">
+                                <thead>
+                                    <tr>
+                                        <th name="th_description" class="text-start" style="color:black;"><span>Product</span></th>
+                                        <th name="th_quantity" class="text-start" style="color:black;"><span>Quantity</span></th>
+                                        <th name="th_quantity" class="text-start" style="color:black;"><span>Unit Price</span></th>
+                                        <th name="th_quantity" class="text-center   " style="color:black;"><span>Taxes</span></th>
+                                        <th name="th_quantity" class="text-end" style="color:black;"><span>Subtotal</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.lines" t-as="line">
+                                        <td class="text-start">
+                                            <span t-field="line.full_product_name"/>
+                                        </td>
+                                        <td  class="text-start">
+                                            <span t-field="line.qty"/>
+                                        </td>
+                                        <td  class="text-start">
+                                            <span t-field="line.price_unit"  class="text-start"/>
+                                        </td>
+                                        <td  class="text-center">
+                                            <span t-field="line.tax_ids_after_fiscal_position.name"/>
+                                        </td>
+                                        <td  class="text-end">
+                                            <span t-field="line.price_subtotal_incl"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="clearfix" name="so_total_summary">
+                            <div id="total" class="row" name="total">
+                                <div class="col-6">
+                                </div>
+                                <div class="col-6">
+                                    <table class="table table-bordered" style="border: 1px solid black;text-align:right;">
+                                        <!-- Tax totals -->
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left">
+                                                    <Storng style="color:black;font-weight: bold;">Total</Storng>
+                                                </th>
+
+                                                <th class="text-end">
+                                                    <Span t-esc="o.amount_total" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th  class="text-left">
+                                                    <Storng style="color:black;font-weight: bold;">Taxes</Storng>
+                                                </th>
+
+                                                <th class="text-end">
+                                                    <Span t-esc="o.amount_tax" t-options='{"widget": "monetary", "display_currency": o.currency_id}' />
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left" >
+                                                    <Storng style="color:black;font-weight: bold;">Total Paid</Storng>
+                                                </td>
+                                                <td class="text-end">
+                                                    <Span t-esc="o.amount_paid" t-options='{"widget": "monetary", "display_currency": o.currency_id}'  style="font-weight: bold;"/>                                            </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>Payment Details</p>
+                                    <table class="table table-bordered" style="border: 1px solid black;">
+                                        <thead>
+                                            <tr>
+                                                <th name="th_description" class="text-start" style="color:black;"><span>Payment Method</span></th>
+                                                <th name="th_quantity" class="text-end" style="color:black;"><span>Amount</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr t-foreach="o.payment_ids" t-as="pay">
+                                                <td class="text-start">
+                                                    <span t-field="pay.payment_method_id.name"/>
+                                                </td>
+                                                <td  class="text-end">
+                                                    <span t-field="pay.amount"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </t>
+
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

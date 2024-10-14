@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="work_email" position="after">
+                    <field name="target"/>
+                    <field name="refund_limit"/>
+                    <field name="total_pos_sales" readonly="1" attrs="{'invisible': [('parent_id','=', False)]}"/>
+                    <field name="total_employee_pos_sales" readonly="1"
+                           attrs="{'invisible': [('parent_id','!=', False)]}"/>
+                    <field name="is_target" invisible="1"/>
+                    <label for="commission_rate" attrs="{'invisible': [('is_target','!=', True)]}"/>
+                    <div class="oe_inline" attrs="{'invisible': [('is_target','!=', True)]}">
+                        <field name="commission_rate" nolabel="1" class="oe_inline"/>
+                        <span style="color:#008784" class="oe_inline">for every</span>
+                        <span style="color:#008784" class="oe_inline">&#160;&#160;&#160;&#160;&#160;</span>
+                        <field name="rate" nolabel="1" class="oe_inline"/>
+                    </div>
+                    <field name="commission"
+                           attrs="{'invisible': [('is_target','!=', True)]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Product Template-->
+
+    <record id="product_cost_price_form_inherit" model="ir.ui.view">
+        <field name="name">product.cost.price.group.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="price_cost_hide" invisible="1" />
+            </xpath>
+            <xpath expr="//label[@for='standard_price']" position="attributes">
+                <attribute name="invisible">price_cost_hide != True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="invisible">price_cost_hide != True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_cost_price_tree_inherit" model="ir.ui.view">
+        <field name="name">product.cost.price.group.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_variant_count']" position="before">
+                <field name="price_cost_hide" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="column_invisible">not price_cost_hide</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!--Product
+    Variation -->
+    <record id="product_product_cost_price_form_inherit" model="ir.ui.view">
+        <field name="name">product.product.cost.price.group.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="price_cost_hide" invisible="1" />
+            </xpath>
+            <!-- <xpath expr="//label[@for='standard_price']" position="attributes">
+                    <attribute name="invisible">price_cost_hide != True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="invisible">price_cost_hide != True</attribute>
+                </xpath> -->
+        </field>
+    </record>
+
+    <record id="product_product_cost_price_tree_inherit" model="ir.ui.view">
+        <field name="name">product.product.price.group.tree</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="price_cost_hide" invisible="1" />
+            </xpath>
+            <!-- <xpath expr="//field[@name='standard_price']" position="attributes">
+                    <attribute name="column_invisible">price_cost_hide == False</attribute>
+                </xpath> -->
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="overtime_extra" model="hr.salary.rule.category">
+            <field name="name">Overtime / Extra Time</field>
+            <field name="code">Over</field>
+        </record>
+
+        <record id="hr_rule_overtime_amount" model="hr.salary.rule">
+            <field name="name">Employee Extra Hours</field>
+            <field name="sequence" eval="20"/>
+            <field name="code">Over</field>
+            <field name="category_id" ref="zakariahone_attendance.overtime_extra"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.overtime_amount</field>
+            <field name="struct_id" ref="cubes_pos_employee_target.new_structure_002"/>
+        </record>
+
+        <record id="hr_rule_late_amount" model="hr.salary.rule">
+            <field name="name">Employee Leave Before Check-out Deduction</field>
+            <field name="sequence" eval="30"/>
+            <field name="code">check-out-ded</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.total_leave_hour_cost</field>
+            <field name="struct_id" ref="cubes_pos_employee_target.new_structure_002"/>
+        </record>
+
+        <record id="hr_rule_late_amount" model="hr.salary.rule">
+            <field name="name">Employee Late from Check-in Deduction</field>
+            <field name="sequence" eval="40"/>
+            <field name="code">late-check-in-ded</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.total_attendance_cost</field>
+            <field name="struct_id" ref="cubes_pos_employee_target.new_structure_002"/>
+        </record>
+
+        <record id="hr_rule_late_amount" model="hr.salary.rule">
+            <field name="name">Employee Absence Deduction</field>
+            <field name="sequence" eval="50"/>
+            <field name="code">absence-ded</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = payslip.total_absence_per_month_cost</field>
+            <field name="struct_id" ref="cubes_pos_employee_target.new_structure_002"/>
+        </record>
+
+    </data>
+</odoo>

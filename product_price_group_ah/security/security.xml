@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Group -->
+     <record model="res.groups" id="group_restrict_standard_price">
+        <field name="name">Show Price Cost For Product</field>
+        <field name="category_id" ref="base.module_category_usability"/>
+    </record>
+
+</odoo>

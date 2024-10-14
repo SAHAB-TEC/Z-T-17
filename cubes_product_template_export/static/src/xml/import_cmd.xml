@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+  <t t-name="cubes_account_accountant.ListViewReconcile.Buttons" t-inherit="web.ListView.Buttons" t-inherit-mode="primary">
+      <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+        <t t-if="widget.modelName == 'product.template'">
+          <!-- <t t-if="widget.is_action_enabled('export_xlsx')"> -->
+            <button class="btn btn-primary o_list_export_xlsx fa fa-download"
+                    t-on-click="() => this.openAutoReconcileWizard()"
+                    groups="cubes_product_template_export.export_product_group"
+                    >
+                    Export All ragab
+            </button>
+          <!-- </t> -->
+        </t>
+      </xpath>
+  </t>
+
+</templates>

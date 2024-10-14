@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_sr_pos_session_report" model="ir.actions.report">
+            <field name="name">Session Summary Report</field>
+            <field name="model">pos.session</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sr_print_pos_session.pos_session_report_template</field>
+            <field name="report_file">sr_print_pos_session.pos_session_report_template</field>
+            <field name="binding_model_id" ref="model_pos_session"/>
+        </record>
+        <!-- <report
+            id="sr_pos_session_report"
+            model="pos.session"
+            string="Session Summary Report"
+            report_type="qweb-pdf"
+            name="sr_print_pos_session.pos_session_report_template"
+            file="sr_print_pos_session.pos_session_report_template"
+        /> -->
+    </data>
+</odoo>

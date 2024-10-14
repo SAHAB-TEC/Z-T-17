@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_customized" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_subtotal']" position="before">
+            <th t-if="doc.print_sale_price" name="th_sale_price" class="text-right">Sale Price</th>
+        </xpath>
+
+        <xpath expr="//td[@name='td_subtotal']" position="before">
+            <td t-if="doc.print_sale_price" class="text-right" >
+                <span t-field="line.product_id.lst_price"/>
+            </td>
+        </xpath>
+
+    </template>
+
+</odoo>

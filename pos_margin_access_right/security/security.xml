@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+
+        <record id="group_margin_value" model="res.groups">
+            <field name="name">Show Margin in POS</field>
+        </record>
+    </data>
+</odoo>

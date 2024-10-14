@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="new_structure_002" model="hr.payroll.structure">
+            <field name="name">Structure</field>
+            <field name="type_id" ref="hr_contract.structure_type_employee"/>
+            <field name="country_id" eval="False"/>
+        </record>
+        <record id="commission" model="hr.salary.rule.category">
+            <field name="name">Commission</field>
+            <field name="code">Comm</field>
+        </record>
+        <record id="hr_rule_commission_target" model="hr.salary.rule">
+            <field name="name">Commission Target</field>
+            <field name="sequence" eval="50"/>
+            <field name="code">Comm</field>
+            <field name="category_id" ref="cubes_pos_employee_target.commission"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = employee.commission</field>
+            <field name="struct_id" ref="cubes_pos_employee_target.new_structure_002"/>
+        </record>
+    </data>
+</odoo>
