@@ -9,7 +9,7 @@ class ProductTemplate(models.Model):
     price_cost_hide = fields.Boolean(
         string='Price Cost Hide',
         compute='_compute_price_cost_hide',
-        required=False, store=True)
+        required=False, store=False)
 
     qty_available = fields.Char()
 
@@ -27,7 +27,7 @@ class ProductProduct(models.Model):
     price_cost_hide = fields.Boolean(
         string='Price Cost Hide',
         compute='_compute_price_cost_hide',
-        required=False, store=True)
+        required=False, store=False)
 
     def _compute_price_cost_hide(self):
         for rec in self:

@@ -234,7 +234,8 @@ def create(self, vals_list):
     lines = super(OriginalAccountMoveLine, self).create(vals_list)
     moves = lines.mapped('move_id')
     if self._context.get('check_move_validity', True):
-        moves._check_balanced()
+        container = {'records': self}
+        moves._check_balanced(container)
     moves.filtered(lambda m: m.state == 'posted')._check_fiscalyear_lock_date()
     lines.filtered(lambda l: l.parent_state == 'posted')._check_tax_lock_date()
     moves._synchronize_business_models({'line_ids'})
