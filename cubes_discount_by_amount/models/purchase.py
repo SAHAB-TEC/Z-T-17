@@ -10,6 +10,7 @@ class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
     discount_by_amount = fields.Float(string='Discount (Amount)', default=0.0)
+    account_analytic_id = fields.Many2one('account.analytic.account', string='Analytic Account', copy=False)
 
     def _prepare_account_move_line(self, move=False):
         self.ensure_one()
