@@ -10,7 +10,7 @@ class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
     discount_by_amount = fields.Float(string='Discount (Amount)', default=0.0)
-    account_analytic_id = fields.Many2one('account.analytic.account', string='Analytic Account', copy=False)
+    # account_analytic_id = fields.Many2one('account.analytic.account', string='Analytic Account', copy=False)
 
     def _prepare_account_move_line(self, move=False):
         self.ensure_one()
@@ -26,7 +26,7 @@ class PurchaseOrderLine(models.Model):
             'discount_by_amount':self.discount_by_amount,
             'price_unit': self.currency_id._convert(self.price_unit, aml_currency, self.company_id, date, round=False),
             'tax_ids': [(6, 0, self.taxes_id.ids)],
-            'analytic_account_id': self.account_analytic_id.id,
+            # 'analytic_account_id': self.account_analytic_id.id,
             # 'analytic_tag_ids': [(6, 0, self.analytic_tag_ids.ids)],
             'purchase_line_id': self.id,
         }
