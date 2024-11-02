@@ -77,7 +77,7 @@ class PurchaseOrderLine(models.Model):
         Check if a discount is defined into the supplier info and if so then
         apply it to the current purchase order line
         """
-        res = super()._onchange_quantity()
+        # res = super()._onchange_quantity()
         if self.product_id:
             date = None
             if self.order_id.date_order:
@@ -89,7 +89,7 @@ class PurchaseOrderLine(models.Model):
                 uom_id=self.product_uom,
             )
             self._apply_value_from_seller(seller)
-        return res
+        # return res
 
     @api.model
     def _apply_value_from_seller(self, seller):

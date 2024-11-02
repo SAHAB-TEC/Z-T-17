@@ -15,5 +15,6 @@ class POSOrder(models.Model):
 
     def _compute_amount_untaxed(self):
         for order in self:
-            currency = order.pricelist_id.currency_id
-            order.amount_untaxed = currency.round(sum(line.price_subtotal for line in order.lines))
+            currency = order.pricelist_id.currency_id or order.currency_id
+            if currency:
+                order.amount_untaxed = currency.round(sum(line.price_subtotal for line in order.lines))

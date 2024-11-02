@@ -9,7 +9,8 @@
         'hr',
         'hr_contract',
         'hr_attendance',
-        'hr_payroll'
+        'hr_payroll',
+        'pos_hr'
     ],
     'assets': {
         'web.assets_qweb': [

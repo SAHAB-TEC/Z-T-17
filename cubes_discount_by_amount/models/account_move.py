@@ -129,7 +129,8 @@ def write(self, vals):
 
     # Check total_debit == total_credit in the related moves.
     if self._context.get('check_move_validity', True):
-        self.mapped('move_id')._check_balanced()
+        container = {'records': self}
+        self.mapped('move_id')._check_balanced(container)
 
     self.mapped('move_id')._synchronize_business_models({'line_ids'})
 

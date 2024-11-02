@@ -16,22 +16,20 @@ def get_target_commission(sales_amount, target_amount, k_target_amount):
 class HrEmployeePublic(models.Model):
     _inherit = 'hr.employee.public'
     last_attendance_id = fields.Many2one(related='employee_id.last_attendance_id', readonly=True,
-                                         groups="hr_attendance.group_hr_attendance_kiosk,hr_attendance.group_hr_attendance,point_of_sale.group_pos_user")
+                                         groups="point_of_sale.group_pos_user")
 
     target = fields.Float(string='Target', related="employee_id.target", readonly=True)
     refund_limit = fields.Float(string='Refund Limit', related="employee_id.refund_limit", readonly=True)
     total_pos_sales = fields.Float(string='Total POS Sales', related="employee_id.total_pos_sales", readonly=True)
-    pos_order_ids = fields.One2many('pos.order', 'pos_employee_id', string='POS Orders', related="employee_id"
-                                                                                                 ".pos_order_ids",
+    pos_order_ids = fields.One2many('pos.order', 'pos_employee_id', string='POS Orders',
+                                    related="employee_id.pos_order_ids",
                                     readonly=True)
     commission = fields.Float(string='Commission', related="employee_id.commission", readonly=True)
     target_commission = fields.Float(string="Target Commission", related="employee_id.target_commission", readonly=True)
-    total_employee_commission = fields.Float(string="Total Employee Commission", related="employee_id"
-                                                                                         ".total_employee_commission",
+    total_employee_commission = fields.Float(string="Total Employee Commission", related="employee_id.total_employee_commission",
                                              readonly=True)
     is_target = fields.Boolean(related="employee_id.is_target", readonly=True)
-    total_employee_pos_sales = fields.Float(string='Total POS Sales', default=0.0, related="employee_id"
-                                                                                           ".total_employee_pos_sales",
+    total_employee_pos_sales = fields.Float(string='Total POS Sales', default=0.0, related="employee_id.total_employee_pos_sales",
                                             readonly=True)
 
 
@@ -41,7 +39,7 @@ class HrEmployee(models.Model):
     target = fields.Float(string='Target', related="contract_id.target_amount", store=True)
     refund_limit = fields.Float(string='Refund Limit', related="contract_id.refund_limit", store=True)
     total_pos_sales = fields.Float(string='Total POS Sales', compute='_compute_total_pos_sales')
-    pos_order_ids = fields.One2many('pos.order', 'pos_employee_id', string='POS Orders')
+    pos_order_ids = fields.One2many('pos.order', 'employee_id', string='POS Orders')
     commission = fields.Float(string='Commission', compute='_compute_commission', readonly=True)
     target_commission = fields.Float(string="Target Commission")
     total_employee_commission = fields.Float(string="Total Employee Commission")

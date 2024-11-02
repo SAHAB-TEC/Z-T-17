@@ -11,10 +11,10 @@
                 <field name="price_cost_hide" invisible="1" />
             </xpath>
             <xpath expr="//label[@for='standard_price']" position="attributes">
-                <attribute name="invisible">price_cost_hide != True</attribute>
+                <attribute name="invisible">parent.price_cost_hide != True</attribute>
             </xpath>
             <xpath expr="//field[@name='standard_price']" position="attributes">
-                <attribute name="invisible">price_cost_hide != True</attribute>
+                <attribute name="invisible">parent.price_cost_hide != True</attribute>
             </xpath>
         </field>
     </record>
@@ -27,8 +27,11 @@
             <xpath expr="//field[@name='product_variant_count']" position="before">
                 <field name="price_cost_hide" column_invisible="1"/>
             </xpath>
+            <xpath expr="//field[@name='standard_price']" position="before">
+                <field name="price_cost_hide" column_invisible="1"/>
+            </xpath>
             <xpath expr="//field[@name='standard_price']" position="attributes">
-                <attribute name="column_invisible">not price_cost_hide</attribute>
+                <attribute name="column_invisible">not parent.price_cost_hide</attribute>
             </xpath>
 
         </field>
