@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    customer_sequence = fields.Char(string='Customer Sequence', required=True, copy=False, readonly=True, index=True, default='New', store=True)
+    customer_sequence = fields.Char(string='Customer Sequence', required=True, readonly=False, index=True, default='New', store=True)
 
     @api.model_create_multi
     def create(self, vals):

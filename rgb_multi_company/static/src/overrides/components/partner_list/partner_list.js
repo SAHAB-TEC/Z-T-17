@@ -14,7 +14,7 @@ patch(PartnerListScreen.prototype, {
                 ...search_fields.map(field => [field, "ilike", this.state.query + "%"])
             ];
         }
-        // FIXME POSREF timeout
+
         const result = await this.orm.silent.call(
             "pos.session",
             "get_pos_ui_res_partner_by_params",
