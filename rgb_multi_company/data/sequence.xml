@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!--        res.partner.customer.sequence-->
+        <record id="sequence_res_partner_customer" model="ir.sequence">
+            <field name="name">Customer Sequence</field>
+            <field name="code">res.partner.customer.sequence</field>
+            <field name="padding">7</field>
+        </record>
+
+    </data>
+</odoo>
