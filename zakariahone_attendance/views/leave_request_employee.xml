@@ -39,7 +39,7 @@
                         </group>
                         <notebook>
                             <page name="reason" string="Reason Of Leave">
-                                <field name="reason_to_leave" readonly="state == done"/>
+                                <field name="reason_to_leave" readonly="state == 'done'"/>
                             </page>
                         </notebook>
                     </sheet>
