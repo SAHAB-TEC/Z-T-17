@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+        <record id="order_form_view_inherit_qts" model="ir.ui.view">
+            <field name="name">order.form.inherit.qts</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='qty_to_invoice']"
+                       position='after'>
+                    <field name="text"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
