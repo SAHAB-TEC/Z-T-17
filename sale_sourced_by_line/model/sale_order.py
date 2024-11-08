@@ -22,7 +22,7 @@ class SaleOrder(models.Model):
     warehouse_id = fields.Many2one(
         comodel_name="stock.warehouse",
         string="Default Warehouse",
-        readonly=True,
+        readonly=False,
         states={"draft": [("readonly", False)], "sent": [("readonly", False)]},
         help="If no source warehouse is selected on line, "
         "this warehouse is used as default. ",

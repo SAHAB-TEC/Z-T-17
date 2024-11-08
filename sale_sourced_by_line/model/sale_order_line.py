@@ -13,7 +13,7 @@ class SaleOrderLine(models.Model):
     warehouse_id = fields.Many2one(
         comodel_name="stock.warehouse",
         string="Source Warehouse",
-        readonly=True,
+        readonly=False,
         states={"draft": [("readonly", False)], "sent": [("readonly", False)]},
         help="If a source warehouse is selected, "
         "it will be used to define the route. "

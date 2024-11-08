@@ -13,7 +13,11 @@ class StockMove(models.Model):
         """
         res = super()._update_candidate_moves_list(candidate_moves_list)
         if self.env.context.get("sale_group_by_line"):
-            candidate_moves_list.append(
+            # candidate_moves_list.append(
+            #     self.sale_line_id.procurement_group_id.stock_move_ids
+            # ) #AttributeError: 'set' object has no attribute 'append'
+            candidate_moves_list.add(
                 self.sale_line_id.procurement_group_id.stock_move_ids
             )
+        #
         return res

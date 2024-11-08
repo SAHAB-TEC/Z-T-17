@@ -18,9 +18,9 @@
                        options="{'no_create': True, 'no_open': True}"/>
             </xpath>
 
-            <xpath expr="//field[@name='order_line']/tree//field[@name='product_template_id']" position="attributes">
-                <attribute name="column_invisible">not parent.has_create_product</attribute>
-            </xpath>
+<!--            <xpath expr="//field[@name='order_line']/tree//field[@name='product_template_id']" position="attributes">-->
+<!--                <attribute name="column_invisible">not parent.has_create_product</attribute>-->
+<!--            </xpath>-->
         </field>
     </record>
 

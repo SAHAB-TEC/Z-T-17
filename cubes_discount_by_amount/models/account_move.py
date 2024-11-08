@@ -122,7 +122,7 @@ def write(self, vals):
             result |= super(OriginalAccountMoveLine, line).write(to_write)
         elif any(field in cleaned_vals for field in BUSINESS_FIELDS):
             to_write = line._get_price_total_and_subtotal()
-            to_write.update(line._get_fields_onchange_subtotal(
+            to_write.update(line._get_fields_onchange_balance(
                 price_subtotal=to_write['price_subtotal'],
             ))
             result |= super(OriginalAccountMoveLine, line).write(to_write)
@@ -259,7 +259,7 @@ class AccountMoveLineEdited(models.Model):
                 continue
 
             line.update(line._get_price_total_and_subtotal())
-            line.update(line._get_fields_onchange_subtotal())
+            line.update(line._get_fields_onchange_balance())
 
     def _get_price_total_and_subtotal(self, price_unit=None, quantity=None, discount=None, currency=None, product=None, partner=None, taxes=None, move_type=None, discount_by_amount=None):
         self.ensure_one()
