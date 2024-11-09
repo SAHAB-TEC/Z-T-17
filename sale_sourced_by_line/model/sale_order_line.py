@@ -4,11 +4,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
+
+    # real_warehouse_id = fields.Many2one('stock.warehouse')
 
     warehouse_id = fields.Many2one(
         comodel_name="stock.warehouse",
@@ -20,19 +22,25 @@ class SaleOrderLine(models.Model):
         "Otherwise, it will get the warehouse of "
         "the sale order",
         store=True,
+        related=False,
         compute_sudo=False,
     )
+
+    # @api.onchange("warehouse_id")
+    # def _depend_wharehouse(self):
+    #     for rec in self:
+    #         rec.real_warehouse_id = rec.warehouse_id.id
 
     def _compute_qty_at_date(self):
         """
         Inherit the compute (in sale_stock module) to keep the warehouse_id
         set on the line.
-        @return:
+        @return:order_id.
         """
         save_wh = {rec: rec.warehouse_id for rec in self}
         result = super()._compute_qty_at_date()
-        for rec in self:
-            rec.warehouse_id = save_wh.get(rec, False)
+        # for rec in self:
+        #     rec.warehouse_id = save_wh.get(rec, False)
         return result
 
     def _prepare_procurement_values(self, group_id=False):
@@ -43,8 +51,8 @@ class SaleOrderLine(models.Model):
         """
         values = super()._prepare_procurement_values(group_id)
         self.ensure_one()
-        if self.warehouse_id:
-            values["warehouse_id"] = self.warehouse_id
+        # if self.warehouse_id:
+        #     values["warehouse_id"] = self.warehouse_id
         return values
 
     def _get_procurement_group_key(self):
@@ -59,3 +67,4 @@ class SaleOrderLine(models.Model):
             return key
         warehouse = self.warehouse_id or self.order_id.warehouse_id
         return priority, warehouse.id
+
