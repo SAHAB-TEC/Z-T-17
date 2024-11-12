@@ -39,8 +39,8 @@ class SaleOrderLine(models.Model):
         """
         save_wh = {rec: rec.warehouse_id for rec in self}
         result = super()._compute_qty_at_date()
-        # for rec in self:
-        #     rec.warehouse_id = save_wh.get(rec, False)
+        for rec in self:
+            rec.warehouse_id = save_wh.get(rec, False)
         return result
 
     def _prepare_procurement_values(self, group_id=False):
@@ -51,8 +51,8 @@ class SaleOrderLine(models.Model):
         """
         values = super()._prepare_procurement_values(group_id)
         self.ensure_one()
-        # if self.warehouse_id:
-        #     values["warehouse_id"] = self.warehouse_id
+        if self.warehouse_id:
+            values["warehouse_id"] = self.warehouse_id
         return values
 
     def _get_procurement_group_key(self):
