@@ -1,4 +1,5 @@
 from itertools import groupby
+import math
 from odoo import api, models,fields,_
 from odoo.fields import float_is_zero
 from datetime import datetime, time
@@ -16,13 +17,6 @@ class PurchaseOrderLine(models.Model):
         store=True, readonly=False
     )
 
-    @api.onchange('price_unit', 'product_qty', 'discount_amount')
-    def _onchange_discount_amount(self):
-        """ Recalculate price_total and price_subtotal when price_unit, product_qty or discount_amount is changed """
-        for line in self:
-            line.price_total = ((line.price_unit * line.product_qty) - line.discount_amount ) + line.price_tax
-            line.price_subtotal = (line.price_unit * line.product_qty) - line.discount_amount
-
     @api.depends('product_qty', 'price_unit', 'taxes_id', 'discount' ,'discount_amount')
     def _compute_amount(self):
         for line in self:
@@ -31,21 +25,12 @@ class PurchaseOrderLine(models.Model):
             amount_untaxed = totals['amount_untaxed']
             amount_tax = totals['amount_tax']
             if line.discount_amount:
-                amount_untaxed=amount_untaxed - line.discount_amount
-            if line.discount:
-                amount_untaxed=amount_untaxed - line.discount
-                
+              amount_untaxed =amount_untaxed - (line.discount_amount + (line.discount / 100))
+              amount_untaxed = math.ceil(amount_untaxed)
             line.update({
                 'price_subtotal': amount_untaxed  ,
                 'price_tax': amount_tax,
                 'price_total': amount_untaxed + amount_tax,
             })
     
-    @api.depends('discount', 'price_unit', 'discount_amount')
-    def _compute_price_unit_discounted(self):
-        for line in self:
-            line.price_unit_discounted = line.price_unit * (1 - line.discount / 100)
-            if line.discount_amount:
-                line.price_unit_discounted = (line.price_unit * line.product_qty) - line.discount_amount
-                
-     
+   
